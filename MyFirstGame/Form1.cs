@@ -14,11 +14,17 @@ namespace MyFirstGame
     public partial class Form1 : Form
     {
         MyEllipse myEll;
+        List<BaseObject> objects = new();
+        Player player;
         public Form1()
         {
             InitializeComponent();
 
-            myEll = new MyEllipse(120, 120, 0);
+            player = new Player(pbMain.Width / 2, pbMain.Height / 2, 0);
+
+            objects.Add(player);
+            objects.Add(new MyEllipse(120, 120, 0));
+            objects.Add(new MyEllipse(200, 220, 0));
         }
 
         private void pbMain_Paint(object sender, PaintEventArgs e)
@@ -27,10 +33,11 @@ namespace MyFirstGame
 
             g.Clear(Color.White);
 
-            
-            g.Transform = myEll.GetTransform();
-
-            myEll.Render(g);
+            foreach(var obj in objects)
+            {
+                g.Transform = obj.GetTransform();
+                obj.Render(g);
+            }
         }
     }
 }

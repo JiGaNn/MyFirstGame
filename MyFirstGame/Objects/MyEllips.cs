@@ -17,8 +17,8 @@ namespace MyFirstGame.Objects
         public override void Render(Graphics g)
         {
             base.Render(g);
-            g.FillEllipse(new SolidBrush(Color.Aqua), -15, -15, 30, 30);
-            g.DrawEllipse(new Pen(Color.Cyan, 2), -15, -15, 30, 30);
+            g.FillEllipse(new SolidBrush(Color.Gold), -15, -15, 30, 30);
+            g.DrawEllipse(new Pen(Color.DarkGoldenrod, 2), -15, -15, 30, 30);
         }
     }
 }
