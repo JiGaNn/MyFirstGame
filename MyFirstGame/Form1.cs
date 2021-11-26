@@ -16,12 +16,15 @@ namespace MyFirstGame
         MyEllipse myEll;
         List<BaseObject> objects = new();
         Player player;
+        Marker marker;
         public Form1()
         {
             InitializeComponent();
 
             player = new Player(pbMain.Width / 2, pbMain.Height / 2, 0);
+            marker = new Marker(pbMain.Width / 2 + 150, pbMain.Height / 2 + 150, 0);
 
+            objects.Add(marker);
             objects.Add(player);
             objects.Add(new MyEllipse(120, 120, 0));
             objects.Add(new MyEllipse(200, 220, 0));
