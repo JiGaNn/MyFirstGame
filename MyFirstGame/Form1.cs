@@ -22,7 +22,17 @@ namespace MyFirstGame
             InitializeComponent();
 
             player = new Player(pbMain.Width / 2, pbMain.Height / 2, 0);
+            player.OnOverlap += (p, obj) =>
+            {
+                txtLog.Text = $"[{DateTime.Now:HH:mm:ss:ff}] Игрок пересекся с {obj}\n" + txtLog.Text;
+            };
+
             marker = new Marker(pbMain.Width / 2 + 150, pbMain.Height / 2 + 150, 0);
+            player.OnMarkerOverlap += (m) =>
+            {
+                objects.Remove(m);
+                marker = null;
+            };
 
             objects.Add(marker);
             objects.Add(player);
@@ -33,21 +43,19 @@ namespace MyFirstGame
         private void pbMain_Paint(object sender, PaintEventArgs e)
         {
             var g = e.Graphics;
-
             g.Clear(Color.White);
 
             foreach(var obj in objects.ToList())
             {
                 if (obj != player && player.Overlaps(obj, g))
                 {
-                    txtLog.Text = $"[{DateTime.Now:HH:mm:ss:ff}] Игрок пересекся с {obj}\n" + txtLog.Text;
-
-                    if (obj == marker)
-                    {
-                        objects.Remove(marker);
-                        marker = null;
-                    }
+                    player.Overlap(obj);
+                    obj.Overlap(player);
                 }
+            }
+
+            foreach (var obj in objects)
+            {
                 g.Transform = obj.GetTransform();
                 obj.Render(g);
             }
