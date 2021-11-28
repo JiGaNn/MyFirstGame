@@ -17,6 +17,7 @@ namespace MyFirstGame
         Player player;
         Marker marker;
         Random rnd = new Random();
+        int score = 0;
         public Form1()
         {
             InitializeComponent();
@@ -35,6 +36,8 @@ namespace MyFirstGame
             };
             player.OnEllipseOverlap += (e) =>
             {
+                score++;
+                txtScore.Text = "Очки: " + score;
                 objects.Remove(e);
                 objects.Add(new MyEllipse(rnd.Next() % (pbMain.Width - 30) + 15, rnd.Next() % (pbMain.Height - 30) + 15, 0));
             };
