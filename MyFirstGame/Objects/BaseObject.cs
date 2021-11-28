@@ -52,6 +52,7 @@ namespace MyFirstGame.Objects
         {
             var matrix = new Matrix();
             matrix.Translate(X, Y);
+            matrix.Rotate(Angle);
             return matrix;
         }
     }

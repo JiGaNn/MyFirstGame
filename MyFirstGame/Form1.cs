@@ -13,7 +13,6 @@ namespace MyFirstGame
 {
     public partial class Form1 : Form
     {
-        MyEllipse myEll;
         List<BaseObject> objects = new();
         Player player;
         Marker marker;
