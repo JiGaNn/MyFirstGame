@@ -36,13 +36,13 @@ namespace MyFirstGame
             player.OnEllipseOverlap += (e) =>
             {
                 objects.Remove(e);
-                objects.Add(new MyEllipse(rnd.Next() % pbMain.Width, rnd.Next() % pbMain.Height, 0));
+                objects.Add(new MyEllipse(rnd.Next() % (pbMain.Width - 30) + 15, rnd.Next() % (pbMain.Height - 30) + 15, 0));
             };
 
             objects.Add(marker);
             objects.Add(player);
-            objects.Add(new MyEllipse(rnd.Next() % pbMain.Width, rnd.Next() % pbMain.Height, 0));
-            objects.Add(new MyEllipse(rnd.Next() % pbMain.Width, rnd.Next() % pbMain.Height, 0));
+            objects.Add(new MyEllipse(rnd.Next() % (pbMain.Width - 30) + 15, rnd.Next() % (pbMain.Height - 30) + 15, 0));
+            objects.Add(new MyEllipse(rnd.Next() % (pbMain.Width - 30) + 15, rnd.Next() % (pbMain.Height - 30) + 15, 0));
         }
 
         private void pbMain_Paint(object sender, PaintEventArgs e)

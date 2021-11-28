@@ -40,7 +40,7 @@ namespace MyFirstGame
             // 
             this.pbMain.Location = new System.Drawing.Point(12, 12);
             this.pbMain.Name = "pbMain";
-            this.pbMain.Size = new System.Drawing.Size(675, 504);
+            this.pbMain.Size = new System.Drawing.Size(675, 311);
             this.pbMain.TabIndex = 0;
             this.pbMain.TabStop = false;
             this.pbMain.Paint += new System.Windows.Forms.PaintEventHandler(this.pbMain_Paint);
@@ -56,7 +56,7 @@ namespace MyFirstGame
             // 
             this.txtLog.Location = new System.Drawing.Point(693, 12);
             this.txtLog.Name = "txtLog";
-            this.txtLog.Size = new System.Drawing.Size(303, 504);
+            this.txtLog.Size = new System.Drawing.Size(239, 311);
             this.txtLog.TabIndex = 1;
             this.txtLog.Text = "";
             // 
@@ -64,7 +64,7 @@ namespace MyFirstGame
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1008, 528);
+            this.ClientSize = new System.Drawing.Size(944, 335);
             this.Controls.Add(this.txtLog);
             this.Controls.Add(this.pbMain);
             this.Name = "Form1";
