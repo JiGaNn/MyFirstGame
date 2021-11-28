@@ -51,7 +51,9 @@ namespace MyFirstGame
             var g = e.Graphics;
             g.Clear(Color.White);
 
-            foreach(var obj in objects.ToList())
+            updatePlayer();
+
+            foreach (var obj in objects.ToList())
             {
                 if (obj != player && player.Overlaps(obj, g))
                 {
@@ -66,8 +68,7 @@ namespace MyFirstGame
                 obj.Render(g);
             }
         }
-
-        private void timer1_Tick(object sender, EventArgs e)
+        private void updatePlayer()
         {
             if (marker != null)
             {
@@ -78,10 +79,29 @@ namespace MyFirstGame
                 dx /= length;
                 dy /= length;
 
-                player.X += dx * 2;
-                player.Y += dy * 2;
+                // по сути мы теперь используем вектор dx, dy
+                // как вектор ускорения, точнее даже вектор притяжения
+                // который притягивает игрока к маркеру
+                // 0.5 просто коэффициент который подобрал на глаз
+                // и который дает естественное ощущение движения
+                player.vX += dx * 0.5f;
+                player.vY += dy * 0.5f;
+
+                // расчитываем угол поворота игрока
+                player.Angle = 90 - MathF.Atan2(player.vX, player.vY) * 180 / MathF.PI;
             }
 
+            // тормозящий момент,
+            // нужен чтобы, когда игрок достигнет маркера произошло постепенное замедление
+            player.vX += -player.vX * 0.1f;
+            player.vY += -player.vY * 0.1f;
+
+            // пересчет позиции игрока с помощью вектора скорости
+            player.X += player.vX;
+            player.Y += player.vY;
+        }
+        private void timer1_Tick(object sender, EventArgs e)
+        {
             pbMain.Invalidate();
         }
 
