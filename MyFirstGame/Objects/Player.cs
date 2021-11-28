@@ -11,6 +11,7 @@ namespace MyFirstGame.Objects
     class Player : BaseObject
     {
         public Action<Marker> OnMarkerOverlap;
+        public Action<MyEllipse> OnEllipseOverlap;
         public Player (float x, float y, float angle) : base(x, y, angle)
         { }
         public override void Render(Graphics g)
@@ -32,6 +33,10 @@ namespace MyFirstGame.Objects
             if(obj is Marker)
             {
                 OnMarkerOverlap(obj as Marker);
+            }
+            if (obj is MyEllipse)
+            {
+                OnEllipseOverlap(obj as MyEllipse);
             }
         }
     }

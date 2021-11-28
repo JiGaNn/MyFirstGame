@@ -17,6 +17,7 @@ namespace MyFirstGame
         List<BaseObject> objects = new();
         Player player;
         Marker marker;
+        Random rnd = new Random();
         public Form1()
         {
             InitializeComponent();
@@ -33,11 +34,16 @@ namespace MyFirstGame
                 objects.Remove(m);
                 marker = null;
             };
+            player.OnEllipseOverlap += (e) =>
+            {
+                objects.Remove(e);
+                objects.Add(new MyEllipse(rnd.Next() % pbMain.Width, rnd.Next() % pbMain.Height, 0));
+            };
 
             objects.Add(marker);
             objects.Add(player);
-            objects.Add(new MyEllipse(120, 120, 0));
-            objects.Add(new MyEllipse(200, 220, 0));
+            objects.Add(new MyEllipse(rnd.Next() % pbMain.Width, rnd.Next() % pbMain.Height, 0));
+            objects.Add(new MyEllipse(rnd.Next() % pbMain.Width, rnd.Next() % pbMain.Height, 0));
         }
 
         private void pbMain_Paint(object sender, PaintEventArgs e)
