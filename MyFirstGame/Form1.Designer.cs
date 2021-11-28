@@ -34,6 +34,7 @@ namespace MyFirstGame
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.txtLog = new System.Windows.Forms.RichTextBox();
             this.txtScore = new System.Windows.Forms.TextBox();
+            this.timer2 = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.pbMain)).BeginInit();
             this.SuspendLayout();
             // 
@@ -69,13 +70,19 @@ namespace MyFirstGame
             this.txtScore.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtScore.Enabled = false;
             this.txtScore.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtScore.Location = new System.Drawing.Point(517, 30);
+            this.txtScore.Location = new System.Drawing.Point(516, 30);
             this.txtScore.Name = "txtScore";
             this.txtScore.ReadOnly = true;
-            this.txtScore.Size = new System.Drawing.Size(51, 18);
+            this.txtScore.Size = new System.Drawing.Size(52, 18);
             this.txtScore.TabIndex = 2;
             this.txtScore.TabStop = false;
             this.txtScore.Text = "Очки: 0";
+            // 
+            // timer2
+            // 
+            this.timer2.Enabled = true;
+            this.timer2.Interval = 50;
+            this.timer2.Tick += new System.EventHandler(this.timer2_Tick);
             // 
             // Form1
             // 
@@ -100,6 +107,7 @@ namespace MyFirstGame
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.RichTextBox txtLog;
         private System.Windows.Forms.TextBox txtScore;
+        private System.Windows.Forms.Timer timer2;
     }
 }
 

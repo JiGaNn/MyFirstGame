@@ -10,6 +10,7 @@ namespace MyFirstGame.Objects
 {
     class MyEllipse : BaseObject
     {
+        public int n = 70;
         public MyEllipse(float x, float y, float angle) : base(x, y, angle)
         {
 
@@ -24,7 +25,8 @@ namespace MyFirstGame.Objects
         {
             base.Render(g);
             g.FillEllipse(new SolidBrush(Color.Gold), -15, -15, 30, 30);
-            g.DrawEllipse(new Pen(Color.DarkGoldenrod, 2), -15, -15, 30, 30);
+            //g.DrawEllipse(new Pen(Color.DarkGoldenrod, 2), -15, -15, 30, 30);
+            g.DrawString(n.ToString(),new Font("Verdana", 8), new SolidBrush(Color.DarkGoldenrod), 10, 10);
         }
     }
 }

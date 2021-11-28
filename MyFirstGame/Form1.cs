@@ -16,6 +16,7 @@ namespace MyFirstGame
         List<BaseObject> objects = new();
         Player player;
         Marker marker;
+        MyEllipse[] ellipse = new MyEllipse[2];
         Random rnd = new Random();
         int score = 0;
         public Form1()
@@ -39,13 +40,25 @@ namespace MyFirstGame
                 score++;
                 txtScore.Text = "Очки: " + score;
                 objects.Remove(e);
-                objects.Add(new MyEllipse(rnd.Next() % (pbMain.Width - 30) + 15, rnd.Next() % (pbMain.Height - 30) + 15, 0));
+                for (int i = 0; i < ellipse.Length; i++)
+                {
+                    if(ellipse[i] == e)
+                    {
+                        ellipse[i] = new MyEllipse(rnd.Next() % (pbMain.Width - 50) + 15, rnd.Next() % (pbMain.Height - 50) + 15, 0);
+                        objects.Add(ellipse[i]);
+                    }
+                }
             };
 
             objects.Add(marker);
             objects.Add(player);
-            objects.Add(new MyEllipse(rnd.Next() % (pbMain.Width - 30) + 15, rnd.Next() % (pbMain.Height - 30) + 15, 0));
-            objects.Add(new MyEllipse(rnd.Next() % (pbMain.Width - 30) + 15, rnd.Next() % (pbMain.Height - 30) + 15, 0));
+
+            for (int i = 0; i < ellipse.Length; i++)
+            {
+                ellipse[i] = new MyEllipse(rnd.Next() % (pbMain.Width - 50) + 15, rnd.Next() % (pbMain.Height - 50) + 15, 0);
+                objects.Add(ellipse[i]);
+            }
+
         }
 
         private void pbMain_Paint(object sender, PaintEventArgs e)
@@ -116,6 +129,22 @@ namespace MyFirstGame
             }
             marker.X = e.X;
             marker.Y = e.Y;
+        }
+
+        private void timer2_Tick(object sender, EventArgs e)
+        {
+            foreach (var el in ellipse)
+            {
+                if (el.n > 0)
+                {
+                    el.n--;
+                }
+                else
+                {
+                    player.Overlap(el);
+                    el.Overlap(player);
+                }
+            }
         }
     }
 }
