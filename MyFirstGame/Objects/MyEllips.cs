@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace MyFirstGame.Objects
 {
-    class MyEllipse : BaseObject
+    public class MyEllipse : BaseObject
     {
         public int n = 70;
         public MyEllipse(float x, float y, float angle) : base(x, y, angle)

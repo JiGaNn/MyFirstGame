@@ -40,14 +40,7 @@ namespace MyFirstGame
                 score++;
                 txtScore.Text = "Очки: " + score;
                 objects.Remove(e);
-                for (int i = 0; i < ellipse.Length; i++)
-                {
-                    if(ellipse[i] == e)
-                    {
-                        ellipse[i] = new MyEllipse(rnd.Next() % (pbMain.Width - 50) + 15, rnd.Next() % (pbMain.Height - 50) + 15, 0);
-                        objects.Add(ellipse[i]);
-                    }
-                }
+                RemoveEllipse(e);
             };
 
             objects.Add(marker);
@@ -60,7 +53,18 @@ namespace MyFirstGame
             }
 
         }
-
+        public void RemoveEllipse(MyEllipse e)
+        {
+            objects.Remove(e);
+            for (int i = 0; i < ellipse.Length; i++)
+            {
+                if (ellipse[i] == e)
+                {
+                    ellipse[i] = new MyEllipse(rnd.Next() % (pbMain.Width - 50) + 15, rnd.Next() % (pbMain.Height - 50) + 15, 0);
+                    objects.Add(ellipse[i]);
+                }
+            }
+        }
         private void pbMain_Paint(object sender, PaintEventArgs e)
         {
             var g = e.Graphics;
@@ -141,8 +145,7 @@ namespace MyFirstGame
                 }
                 else
                 {
-                    player.Overlap(el);
-                    el.Overlap(player);
+                    RemoveEllipse(el);
                 }
             }
         }

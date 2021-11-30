@@ -8,7 +8,7 @@ using System.Drawing.Drawing2D;
 
 namespace MyFirstGame.Objects
 {
-    class BaseObject
+    public class BaseObject
     {
         public float X;
         public float Y;
