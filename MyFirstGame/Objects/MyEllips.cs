@@ -10,7 +10,7 @@ namespace MyFirstGame.Objects
 {
     public class MyEllipse : BaseObject
     {
-        public int n = 70;
+        public int n = 90;
         public MyEllipse(float x, float y, float angle) : base(x, y, angle)
         {
 
