@@ -16,6 +16,7 @@ namespace MyFirstGame
         List<BaseObject> objects = new();
         Player player;
         Marker marker;
+        DarkRectangle rect;
         MyEllipse[] ellipse = new MyEllipse[2];
         Random rnd = new Random();
         int score = 0;
@@ -43,6 +44,13 @@ namespace MyFirstGame
                 RemoveEllipse(e);
             };
 
+            rect = new DarkRectangle(0, pbMain.Height, 0);
+            rect.OnDarkOverlap += (d) =>
+            {
+                d.color = Color.White;
+            };
+
+            objects.Add(rect);
             objects.Add(marker);
             objects.Add(player);
 
@@ -74,10 +82,15 @@ namespace MyFirstGame
 
             foreach (var obj in objects.ToList())
             {
-                if (obj != player && player.Overlaps(obj, g))
+                if (obj != player && obj != rect && player.Overlaps(obj, g))
                 {
                     player.Overlap(obj);
                     obj.Overlap(player);
+                }
+                if(obj != rect && rect.Overlaps(obj, g))
+                {
+                    rect.Overlap(obj);
+
                 }
             }
 
@@ -85,6 +98,7 @@ namespace MyFirstGame
             {
                 g.Transform = obj.GetTransform();
                 obj.Render(g);
+                obj.color = obj.defaultColor;
             }
         }
         private void updatePlayer()
@@ -121,6 +135,11 @@ namespace MyFirstGame
         }
         private void timer1_Tick(object sender, EventArgs e)
         {
+           if(rect.X > pbMain.Width+400)
+            {
+                rect.X = 0;
+            }
+            rect.X += 3;
             pbMain.Invalidate();
         }
 

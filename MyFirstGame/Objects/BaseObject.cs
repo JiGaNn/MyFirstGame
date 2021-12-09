@@ -13,6 +13,8 @@ namespace MyFirstGame.Objects
         public float X;
         public float Y;
         public float Angle;
+        public Color color;
+        public Color defaultColor;
 
         public Action<BaseObject, BaseObject> OnOverlap;
         public BaseObject(float x, float y, float angle)

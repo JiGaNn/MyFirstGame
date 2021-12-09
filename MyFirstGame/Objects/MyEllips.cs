@@ -13,7 +13,7 @@ namespace MyFirstGame.Objects
         public int n = 90;
         public MyEllipse(float x, float y, float angle) : base(x, y, angle)
         {
-
+            color = defaultColor = Color.Gold;
         }
         public override GraphicsPath GetGraphicsPath()
         {
@@ -24,9 +24,9 @@ namespace MyFirstGame.Objects
         public override void Render(Graphics g)
         {
             base.Render(g);
-            g.FillEllipse(new SolidBrush(Color.Gold), -15, -15, 30, 30);
+            g.FillEllipse(new SolidBrush(color), -15, -15, 30, 30);
             //g.DrawEllipse(new Pen(Color.DarkGoldenrod, 2), -15, -15, 30, 30);
-            g.DrawString(n.ToString(),new Font("Verdana", 8), new SolidBrush(Color.DarkGoldenrod), 10, 10);
+            g.DrawString(n.ToString(),new Font("Verdana", 8), new SolidBrush(color), 10, 10);
         }
     }
 }
