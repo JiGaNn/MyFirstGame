@@ -18,13 +18,13 @@ namespace MyFirstGame.Objects
         public override GraphicsPath GetGraphicsPath()
         {
             var path = base.GetGraphicsPath();
-            path.AddRectangle(new Rectangle(-300, -Convert.ToInt32(Y), 300, Convert.ToInt32(Y)));
+            path.AddRectangle(new Rectangle(-300, -500, 300, 500));
             return path;
         }
         public override void Render(Graphics g)
         {
             base.Render(g);
-            g.FillRectangle(new SolidBrush(Color.Black), -300, -Convert.ToInt32(Y), 300, Convert.ToInt32(Y));
+            g.FillRectangle(new SolidBrush(Color.Black), -300, -500, 300, 500);
         }
         public override void Overlap(BaseObject obj)
         {

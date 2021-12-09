@@ -135,7 +135,7 @@ namespace MyFirstGame
         }
         private void timer1_Tick(object sender, EventArgs e)
         {
-           if(rect.X > pbMain.Width+400)
+            if (rect.X > pbMain.Width + 400)
             {
                 rect.X = 0;
             }
